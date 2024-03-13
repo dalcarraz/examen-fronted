@@ -1,0 +1,53 @@
+<div class="container mt-4 form-container">
+  <h2>Lista de Usuarios</h2>
+
+  <ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+      {{ user.username }} - {{ user.name }} - {{ user.lastname }} - {{ user.email }} - {{ user.is_active }} - {{ user.kind }} - {{ user.created_at | date }}
+      <button class="btn btn-primary btn-sm" (click)="updateUser(user.id)">Actualizar</button>
+      <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Eliminar</button>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container mt-4">
+  <h2>Crear Nuevo Usuario</h2>
+
+  <form (ngSubmit)="createUser()" name="userForm">
+    <div class="form-group">
+      <input [(ngModel)]="newUser.username" name="username" class="form-control" placeholder="Username">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.name" name="name" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.lastname" name="lastname" class="form-control" placeholder="Lastname">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.email" name="email" class="form-control" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.password" name="password" class="form-control" placeholder="Password">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.is_active" name="is_active" type="number" class="form-control" placeholder="Is Active">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="newUser.kind" name="kind" type="number" class="form-control" placeholder="Kind">
+    </div>
+
+    <!-- No estoy seguro de qué tipo de campo es 'created_at', si es una fecha puedes usar un campo de tipo date -->
+    <div class="form-group">
+      <input [(ngModel)]="newUser.created_at" name="created_at" type="date" class="form-control" placeholder="Created At">
+    </div>
+
+    <button type="submit" class="btn btn-success">Crear Usuario</button>
+  </form>
+</div>
